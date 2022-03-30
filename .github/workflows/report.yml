@@ -41,8 +41,4 @@ jobs:
         DORM_BUILDING: ${{ secrets.DORM_BUILDING }}
         DORM : ${{ secrets.DORM }}
       run: |
-<<<<<<< HEAD
-        python report.py data_atschool.json "$STUID" "$PASSWORD" "$EMER_PERSON" "$EMER_RELA" "$EMER_PHONE"
-=======
         python report.py data_atschool.json "$STUID" "$PASSWORD" "$EMER_PERSON" "$EMER_RELA" "$EMER_PHONE" "$DORM_BUILDING" "$DORM"
->>>>>>> c1cbf698632a463cae6f32615c1a4fce503c8f0f

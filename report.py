@@ -269,6 +269,18 @@ class Report(object):
             't': 3,
         }
         ret = session.post(url=REPORT_URL, data=REPORT_DATA)
+        # 高新区
+        REPORT_URL = "https://weixine.ustc.edu.cn/2020/apply/daliy/ipost"
+        RETURN_COLLEGE = {'高新校区', '先研院', '国金院'}
+        REPORT_DATA = {
+            '_token': token2,
+            'start_date': start_date,
+            'end_date': end_date,
+            'return_college[]': RETURN_COLLEGE,
+            'reason': "上课/自习",
+            't': 4,
+        }
+        advancedRet = session.post(url=REPORT_URL, data=REPORT_DATA)
         
         # #删除占用码(可选功能, 默认关闭, 若想开启请取消注释)
         # if (is_new_upload == 1 and is_user_upload == 0):
@@ -283,11 +295,11 @@ class Report(object):
         #    else:
         #        print(f"delete error, error code: {ret1} and {ret2}.") 
 
-        if ret.status_code == 200:
+        if ret.status_code == 200 and advancedRet.status_code == 200 :
             print("success! code: "+str(ret.status_code))
             return True
         else:
-            print("error occured, code: "+str(ret.status_code))
+            print("error occured, code: "+str(ret.status_code)+str(advancedRet.status_code))
             return False
         
 
